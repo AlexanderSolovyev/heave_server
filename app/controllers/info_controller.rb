@@ -1,4 +1,5 @@
 class InfoController < ApplicationController
-  def secret
+  def show
+    render json: { data: @current_user}, status: 200
   end
 end

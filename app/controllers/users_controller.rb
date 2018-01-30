@@ -2,14 +2,25 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_request
 
   def registration
-    User.create(user_params)
+    User.create(user_params_pass)
     render json: { ok: 'registration completed'}, status: 200
   end
 
   private
 
+  def user_params_pass
+    u = user_params
+    u["password"]=create_pass
+    return u
+  end
   def user_params
-    params.permit(:name, :email, :username, :password)
+    params.require(:user).permit(:name, :email, :phone, :reg_number)
+  end
+
+  def create_pass
+    "123456"
+    #pass=Random.new
+    #pass.rand(1000...10000).to_s
   end
 end
 #  info = {
