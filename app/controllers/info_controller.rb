@@ -1,5 +1,5 @@
 class InfoController < ApplicationController
   def show
-    render json: { data: @current_user}, status: 200
+    render json: { info: @current_user}, status: 200
   end
 end
