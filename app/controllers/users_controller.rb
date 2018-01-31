@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_request
 
   def registration
-    User.create(user_params_pass)
-    render json: { ok: 'registration completed'}, status: 200
+    user=User.new(user_params_pass)
+    if user.save
+      render json: { ok: 'registration completed'}, status: 200
+    else
+      render json: {error: user.errors}, status: 500
+    end
   end
 
   private
