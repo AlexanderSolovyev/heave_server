@@ -15,7 +15,7 @@ class SendUserJob < ApplicationJob
       'ID' => user.id
       #'Confirm' => 'True' // из 1С
     }
-    req = Net::HTTP::Post.new(uri, info)
+    req = Net::HTTP::Post.new(uri)
     req.body = info.to_json
     req.basic_auth 'exch', '13572468'
     res = Net::HTTP.start(uri.hostname, uri.port){ |http| http.request(req) }

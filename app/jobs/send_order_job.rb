@@ -14,7 +14,7 @@ class SendOrderJob < ApplicationJob
             'deliveryTime' => order.delivery_time,
             'information' => order.information
     }
-    req = Net::HTTP::Post.new(uri, data)
+    req = Net::HTTP::Post.new(uri)
     req.body = data.to_json
     req.basic_auth 'exch', '13572468'
     res = Net::HTTP.start(uri.hostname, uri.port){ |http| http.request(req) }
