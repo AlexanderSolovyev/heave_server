@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   end
 
   def create_pass
-    "123456"
-    #pass=Random.new
-    #pass.rand(1000...10000).to_s
+    #"123456"
+    pass=Random.new
+    pass.rand(100000...1000000).to_s
   end
 end
 #  info = {
