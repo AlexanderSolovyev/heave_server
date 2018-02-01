@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def registration
     user=User.new(user_params_pass)
     if user.save
+      SendOrderJob.perform_later (@order,@pass)
       render json: { ok: 'registration completed'}, status: 200
     else
       render json: {error: user.errors}, status: 500
@@ -14,7 +15,8 @@ class UsersController < ApplicationController
 
   def user_params_pass
     u = user_params
-    u["password"]=create_pass
+    @pass=create_pass
+    u["password"]=@pass
     return u
   end
   def user_params

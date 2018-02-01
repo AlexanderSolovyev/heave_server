@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   post 'authenticate', to: 'authentication#authenticate'
   post 'registration', to: 'users#registration'
   get 'info', to: 'info#show'
+  post 'send', to: 'orders#create'
+  get 'show', to: 'orders#show'
 end
