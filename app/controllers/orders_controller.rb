@@ -10,9 +10,9 @@ class OrdersController < ApplicationController
     @order[:user_id]=@current_user.id
     if @order.save
       SendOrderJob.perform_later @order
-      render status: 200
+      render json: { ok: 'order send'}, status: 200
     else
-      render json: { errors: @order.errors }
+      render json: { errors: @order.errors }, status: 500
     end
   end
 
