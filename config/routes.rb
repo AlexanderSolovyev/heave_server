@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'info', to: 'info#show'
   post 'send', to: 'orders#create'
   get 'show', to: 'orders#show'
+  get 'goods', to: 'goods#list'
+  get 'goods/:id', to: 'goods#image'
 end
