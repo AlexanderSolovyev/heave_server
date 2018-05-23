@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def resend
+    @user=User.find_by email: user_params[:email]
+    if @user
+      ResendJob.perform_later(@user)
+    else
+      render json: { error: 'email not found' }, status: 500
+    end
+  end
+
   private
 
   def user_params_pass
