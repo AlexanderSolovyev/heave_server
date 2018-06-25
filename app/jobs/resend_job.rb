@@ -5,7 +5,7 @@ class ResendJob < ApplicationJob
 
   def perform(user)
    #uri = URI.parse("http://212.7.4.74:8000/hv_copy/hs/mobileConfirmgetConfirm")
-	uri = URI.parse("http://212.7.4.74:8000/hv_copy/hs/mobile?GetConfirm")
+	uri = URI.parse("http://app.heavesi.ee:8000/hv_copy/hs/mobile/GetConfirm")
     info = {
       'regNumber' => user.reg_number,
       'name' => user.name,

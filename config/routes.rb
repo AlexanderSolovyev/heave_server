@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'show', to: 'orders#show'
   get 'goods', to: 'goods#list'
   get 'goods/:id', to: 'goods#image'
+  get 'invoices', to: 'invoice#get_invoices'
 end
