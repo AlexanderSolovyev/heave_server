@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'goods', to: 'goods#list'
   get 'goods/:id', to: 'goods#image'
   get 'invoices', to: 'invoice#get_invoices'
+  get 'arved', to: 'invoice#get_arved'
 end
