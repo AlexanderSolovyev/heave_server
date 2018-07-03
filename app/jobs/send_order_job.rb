@@ -4,7 +4,7 @@ class SendOrderJob < ApplicationJob
   queue_as :default
 
   def perform(order)
-    uri = URI.parse("http://app.heavesi.ee:8000/hv_copy/hs/mobileorders?PutOrder")
+    uri = URI.parse("http://192.168.4.201/hv_copy/hs/mobileorders?PutOrder")
 
     ##data = {'id' => order.user_id,
     ##        'bottles' => order.bottles,

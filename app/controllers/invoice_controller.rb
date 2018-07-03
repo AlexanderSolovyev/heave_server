@@ -37,7 +37,7 @@ end
 private
 
 def get_from_1c
-  uri = URI.parse("http://app.heavesi.ee/hv_copy/hs/mobile/GetOrders")
+  uri = URI.parse("http://192.168.4.201/hv_copy/hs/mobile/GetOrders")
   id = {
     'ID' => @current_user.id
   }
@@ -49,7 +49,7 @@ def get_from_1c
 end
 
 def get_arved_from_1c
-  uri = URI.parse("http://app.heavesi.ee/hv_copy/hs/mobile/GetBills")
+  uri = URI.parse("http://192.168.4.201/hv_copy/hs/mobile/GetBills")
   id = {
     'ID' => @current_user.id
   }
