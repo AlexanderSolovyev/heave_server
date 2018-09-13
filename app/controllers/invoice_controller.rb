@@ -7,9 +7,9 @@ class InvoiceController < ApplicationController
     b=JSON.parse(a)
     b.each do |x|
       if x["condition"] == "Выполнено"
-        x["condition"]="md-done-all"
+        x["condition"]="done-all"
       elsif x["condition"]=="К выполнению"
-        x["condition"]="md-checkmark"
+        x["condition"]="checkmark"
       end
     end
     render json: b
