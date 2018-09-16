@@ -25,7 +25,7 @@ class GoodsController < ApplicationController
     id = {
       'ID' => @current_user.id
     }
-    uri = URI.parse("http://192.168.4.201/hv_copy/hs/mobile/GetCatalog")
+    uri = URI.parse("http://192.168.4.201/heavesi/hs/mobile/GetCatalog")
     req = Net::HTTP::Post.new(uri)
     req.body = id.to_json
     req.basic_auth 'exch', '13572468'
