@@ -22,7 +22,6 @@ class InvoiceController < ApplicationController
     b.each do |x|
       date=x["payDate"]
       puts Date.strptime(date,"%d.%m.%Y")
-      #puts Date.today-2000.years
       if Date.strptime(x["payDate"],"%d.%m.%Y") < (Date.today-2000.years)
         x["color"]="danger"
       else
@@ -37,9 +36,10 @@ end
 private
 
 def get_from_1c
-  uri = URI.parse("http://192.168.4.201/heavesi/hs/mobile/GetOrders")
+  uri = URI.parse("#{PATH_1c}/hs/mobile/GetOrders")
   id = {
-    'ID' => @current_user.id
+    #'ID' => @current_user.id
+    'email' => @current_user.email
   }
   req = Net::HTTP::Post.new(uri)
   req.body = id.to_json
@@ -49,9 +49,10 @@ def get_from_1c
 end
 
 def get_arved_from_1c
-  uri = URI.parse("http://192.168.4.201/heavesi/hs/mobile/GetBills")
+  uri = URI.parse("#{PATH_1c}/hs/mobile/GetBills")
   id = {
-    'ID' => @current_user.id
+    #'ID' => @current_user.id
+    'email' => @current_user.email
   }
   req = Net::HTTP::Post.new(uri)
   req.body = id.to_json

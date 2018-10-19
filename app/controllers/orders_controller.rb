@@ -8,9 +8,6 @@ class OrdersController < ApplicationController
   def create
     params[:id]= @current_user.id
     @order=params.to_json
-    #@order=Order.new(order_params)
-    #@order[:user_id]=@current_user.id
-    #if @order.save
       SendOrderJob.perform_later @order
       # render json: { ok: 'order send'}, status: 200
     #else

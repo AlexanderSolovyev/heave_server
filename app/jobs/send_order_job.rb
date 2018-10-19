@@ -4,7 +4,7 @@ class SendOrderJob < ApplicationJob
   queue_as :default
 
   def perform(order)
-    uri = URI.parse("http://192.168.4.201/heavesi/hs/mobileorders?PutOrder")
+    uri = URI.parse("#{PATH_1c}/hs/mobileorders?PutOrder")
 
     ##data = {'id' => order.user_id,
     ##        'bottles' => order.bottles,
@@ -16,7 +16,8 @@ class SendOrderJob < ApplicationJob
     ##}
     o=JSON.parse(order)
     data = {
-      'Id' => o["id"],
+      #'Id' => o["id"],
+      'email' => @current_user.email,
       'deliveryDate' => o["delivery_date"],
       'deliveryTime' => o["delivery_time"],
       'deliveryAddress'=> o["delivery_address"],

@@ -11,32 +11,32 @@ class UsersController < ApplicationController
     end
   end
 
-  def resend
-    @user=User.find_by email: user_params[:email]
-    if @user
-      ResendJob.perform_later(@user)
-    else
-      render json: { error: 'email not found' }, status: 500
-    end
-  end
+  #def resend
+  #  @user=User.find_by email: user_params[:email]
+  #  if @user
+#      ResendJob.perform_later(@user)
+#    else
+#      render json: { error: 'email not found' }, status: 500
+#    end
+  #end
 
   private
 
-  def user_params_pass
-    u = user_params
-    @pass=create_pass
-    u["password"]=@pass
-    return u
-  end
+  #def user_params_pass
+  #  u = user_params
+  #  @pass=create_pass
+  #  u["password"]=@pass
+  #  return u
+  #end
   def user_params
     params.require(:user).permit(:name, :email, :phone, :reg_number)
   end
 
-  def create_pass
+  #def create_pass
     #"123456"
-    pass=Random.new
-    pass.rand(100000...1000000).to_s
-  end
+  #  pass=Random.new
+  #  pass.rand(100000...1000000).to_s
+  #end
 end
 #  info = {
 #      'regNumber' => '' #Регномер компании, или Личный (Селект: [Erakliendi] - "isikukood" / [ärikliendi] - "Reg.kood")
