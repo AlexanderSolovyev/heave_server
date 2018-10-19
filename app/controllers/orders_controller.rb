@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    params[:id]= @current_user.id
+    params[:email]= @current_user.email
     @order=params.to_json
       SendOrderJob.perform_later @order
       # render json: { ok: 'order send'}, status: 200

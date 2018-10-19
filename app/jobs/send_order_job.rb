@@ -17,7 +17,7 @@ class SendOrderJob < ApplicationJob
     o=JSON.parse(order)
     data = {
       #'Id' => o["id"],
-      'email' => @current_user.email,
+      'email' => o["email"],
       'deliveryDate' => o["delivery_date"],
       'deliveryTime' => o["delivery_time"],
       'deliveryAddress'=> o["delivery_address"],
