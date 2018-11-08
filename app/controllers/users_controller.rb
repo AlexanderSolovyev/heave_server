@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     tok=token
     res =reg user, tok
     result = JSON.parse(res.body)
-    byebug
     if (res.code == "201")
       render json: {}, status: 200
     else
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
     uri = URI.parse("https://heavesi.ee/wp-json/wc/v2/customers")
     info = {
       "username" => user.name,
-      "password" => user.password,
+      "password" => params["password"],
       "first_name" => user.name,
       "email" => user.email,
       "billing" => { "phone" => user.phone},
