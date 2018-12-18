@@ -20,14 +20,24 @@ class UsersController < ApplicationController
     #end
   end
 
-  #def resend
+  def resend
+    uri = URI.parse("https://heavesi.ee/wp-json/heavesi/retrievePassword")
+    info = {
+      "email" => user_params[:email]
+    }
+    req = Net::HTTP::Post.new(uri)
+    req.content_type = "application/json"
+    req.add_field("cache-control", "no-cache")
+    #req.add_field("Authorization", "Bearer "+token)
+    req.body = info.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https'){ |http| http.request(req) }
   #  @user=User.find_by email: user_params[:email]
-  #  if @user
-#      ResendJob.perform_later(@user)
-#    else
-#      render json: { error: 'email not found' }, status: 500
-#    end
-  #end
+    if (res.body == "true")
+     render json: { ok: 'true' }, status: 200
+    else
+     render json: {error: 'email not found' } , status: 500
+    end
+  end
 
   private
 

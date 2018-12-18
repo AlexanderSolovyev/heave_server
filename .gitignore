@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 /config/secrets.yml
 /config/puma.rb
+/config/initializers/secret_token.rb
 
 # Ignore bundler config.
 /.bundle
