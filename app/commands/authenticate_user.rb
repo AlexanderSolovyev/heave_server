@@ -21,11 +21,8 @@ class AuthenticateUser
     result = get_user
     if (result.code == "200")
       data=JSON.parse(result.body)
-      user = User.find_or_create_by(email: data["email"]) do |c|
-        c.name = data["name"]
-        c.phone = data["phone"]
-        c.reg_number = data["regNumber"]
-      end
+      user = User.find_or_create_by(email: data["email"]) 
+      user.update_attributes(name: data["name"], phone: data["phone"], reg_number: data["regNumber"])
       return user if user.save
     else
       errors.add :user_authentication, 'invalid_credentials'
